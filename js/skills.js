@@ -1,8 +1,10 @@
 /*
  * 技の一覧とお手本動画の設定
  *
- * 動画はすべて YouTube「ベネッセ教育情報」チャンネル（@benessekyouiku）の
- * 「できたよ！マット運動」シリーズから、技ごとに 1 本を固定しています。
+ * 動画は技ごとに 1 本を固定しています。
+ *   ・基本は YouTube「ベネッセ教育情報」チャンネル（@benessekyouiku）の
+ *     「できたよ！マット運動」シリーズ
+ *   ・開脚後転・伸膝後転・頭倒立・壁倒立は、先生が指定した動画
  *
  *   video   : その技のお手本動画（YouTube の動画 ID = watch?v= の後ろ 11 文字）
  *   related : チャンネル内に技そのものの動画が無いとき、参考として見せる近い技の動画
@@ -29,6 +31,14 @@
     sokutenDai:    { id: "NCesFzhK1ys", title: "【側転の基本練習①　目印を置いて台を飛び越す】" },
     sokutenHojo:   { id: "Odozyaz4tfY", title: "【側転の基本練習②　補助付き側転】" }
   };
+  Object.keys(V).forEach(function (k) { V[k].channel = "ベネッセ教育情報「できたよ！マット運動」"; });
+
+  // 先生が指定した動画（ベネッセ教育情報チャンネル以外）
+  var KUMAMOTO = "熊本市小学校体育研究会";
+  V.kaikyakuKouten = { id: "5uZxE7Uw0ns", title: "開脚後転（お手本）", channel: KUMAMOTO };
+  V.shinshitsuKouten = { id: "WeK0Wzb8srE", title: "技見本　マット　伸膝後転　（しんしつこうてん）", channel: "ファイブMこども器械体操" };
+  V.atamaTouritsu = { id: "Iw1QsEDvB_k", title: "頭倒立（お手本）", channel: KUMAMOTO };
+  V.kabeTouritsu = { id: "NTckOXcYfCc", title: "壁倒立（お手本）", channel: KUMAMOTO };
 
   // よく使うポーズ（右向き）
   var P = {
@@ -123,9 +133,7 @@
         { m: true, t: 190, h: -40, a1: 170, f1: 200, a2: 175, f2: 205, l1: 245, s1: 245, l2: 230, s2: 230 },
         { m: true, t: 50, a1: 170, f1: 182, a2: 165, f2: 178, l1: 222, s1: 222, l2: 238, s2: 238 }
       ],
-      video: null,
-      related: V.kouten,
-      relatedNote: "ベネッセ教育情報チャンネルには開脚後転の動画がないため、「後転のポイント」を参考動画にしています。",
+      video: V.kaikyakuKouten,
       extra: [V.sakaKouten, V.hojoKouten]
     },
     {
@@ -141,9 +149,7 @@
         { m: true, t: 260, h: -15, a1: 10, f1: 250, a2: 15, f2: 255, l1: 300, s1: 300, l2: 305, s2: 305 },
         { m: true, t: 125, a1: 175, f1: 180, a2: 170, f2: 178, l1: 190, s1: 190, l2: 195, s2: 195 }
       ],
-      video: null,
-      related: V.kouten,
-      relatedNote: "ベネッセ教育情報チャンネルには伸膝後転の動画がないため、「後転のポイント」を参考動画にしています。",
+      video: V.shinshitsuKouten,
       extra: [V.sakaKouten]
     },
     {
@@ -175,9 +181,7 @@
         { x: 210, t: 180, a1: 100, f1: 170, a2: 105, f2: 172, l1: 90, s1: 180, l2: 95, s2: 182 },
         { x: 330, t: 180, a1: 100, f1: 170, a2: 105, f2: 172, l1: 2, s1: 2, l2: 358, s2: 358 }
       ],
-      video: null,
-      relatedNote: "ベネッセ教育情報チャンネルには頭倒立のお手本動画がありません。",
-      extra: [V.haitouritsu]
+      video: V.atamaTouritsu
     },
     {
       key: "kabe-touritsu",
@@ -193,8 +197,7 @@
         { x: 200, t: 165, a1: 180, f1: 180, a2: 178, f2: 178, l1: 40, s1: 40, l2: 175, s2: 185 },
         { x: 340, t: 185, a1: 182, f1: 182, a2: 180, f2: 180, l1: 15, s1: 15, l2: 10, s2: 10 }
       ],
-      video: null,
-      relatedNote: "ベネッセ教育情報チャンネルには壁倒立のお手本動画がありません。"
+      video: V.kabeTouritsu
     },
     {
       key: "touritsu-bridge",

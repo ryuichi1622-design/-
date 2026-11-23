@@ -65,7 +65,7 @@
     f.allowFullscreen = true;
     f.referrerPolicy = "strict-origin-when-cross-origin";
     videoBox.appendChild(f);
-    document.getElementById("player-video-title").textContent = "できたよ！マット運動 " + video.title;
+    document.getElementById("player-video-title").textContent = video.channel + "：" + video.title;
     var a = document.getElementById("player-yt");
     a.href = watchUrl(video.id);
     a.hidden = false;
